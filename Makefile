@@ -6,3 +6,9 @@ all:
  
 clean:
 	make -C $(KDIR)  M=`pwd` clean
+
+test: all
+	sudo insmod caesar-cipher.ko
+	gcc caesar-cipher-test.c -o caesar-cipher-test
+	./caesar-cipher-test
+	sudo rmmod caesar-cipher
